@@ -1,0 +1,2 @@
+[04-Nov-2021 07:58:28 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/cafejips/public_html/admin/edit.php on line 13
+[06-Nov-2021 07:15:55 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/cafejips/public_html/admin/edit.php on line 13
