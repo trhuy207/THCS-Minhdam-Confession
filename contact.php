@@ -1,7 +1,4 @@
 <!-- BẢN QUYỀN THUỐC VỀ Quốc Huy | CODED BY QUỐC HUY -->
-<?php
-header('location: fixBug/')
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,10 +50,10 @@ header('location: fixBug/')
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/contact.php">Hỗ Trợ</a>
                 </li>
             </ul>
@@ -69,20 +66,7 @@ header('location: fixBug/')
     <div class="container">
         <div class="card">
             <div class="card-header" style="background-color: #0593a1; color: whitesmoke">
-                <h1>THCS Minh Đạm Confession</h1>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Chào mừng các bạn đã đến với THCS Minh Đạm confession!! </h5>
-                <p class="card-text">
-                    Tại đây bản hãy gửi những tâm tư, tình cảm, ... của bản thân mà không lo bị lộ danh tính nè :> <br>Chúc Các Bạn Một Ngày Vui Vẻ!
-                    <br><br>
-                    LƯU Ý :
-                    AD sẽ không duyệt những cfs mang tính gây war, xúc phạm nhau hay có những từ ngữ thô tục đâu nhé!
-                    Có thể confession sẽ bị trễ vì con ad lười hoặc bận 
-                    Hết rùi hihi, cảm ơn mọi người đã đọc :33
-                    <br>
-                    <i>Giờ duyệt: 5h30 - 12h - 14h - 19h (có thể sẽ trễ một chút do ad khá bận ạ)</i>
-                </p>
+                <h1>THCS Minh Đạm Confession - Hỗ Trợ</h1>
             </div>
         </div>
     </div>
@@ -92,20 +76,37 @@ header('location: fixBug/')
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Mọi người có tâm sự gì nè</h5>
                 <?php if(isset($_REQUEST['info_form'])){ ?>
                     <?php if($_REQUEST['info_form'] == "successfully"){?>
                         <div class="alert alert-success">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Thành Công!</strong> Chúng tôi đã nhận được confession của bạn rùi, chúng tôi sẽ kiểm duyệt sớm thôi, nếu bạn không thấy confession của mình thì hãy liên hệ với chúng tôi với đường link <a href="https://www.tranquochuy.ga" target="_blank">sau</a>! Xin Cám Ơn Rất Nhiều.
+                            <strong>Thành Công!</strong> Chúng tôi đã nhận được thông tin của bạn rùi, chúng tôi sẽ kiểm tra sớm thôi! Xin Cám Ơn Rất Nhiều.
                         </div>
                     <?php }?>
                 <?php } ?>
-                <form action="admin/includes/form/form.php" method="POST">  
+                <form action="admin/includes/form/contactFrom.php" method="POST">
                     <div class="form-group">
-                        <textarea id="message" name="message" class="form-control" placeholder="Xin mời để lại tâm sự" rows="2" required></textarea>
-                    </div>   
-                    <button class="btn btn-primary me-2" type="submit" name="submit">Gửi nè :></button>
+                        <label>Họ Và Tên*</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nhập Tên Của Bạn..." required />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email Của Bạn..." />
+                    </div>
+                    <div class="form-group">
+                        <label>Số Điện Thoại</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập Số Điện Thoại Của Bạn..." />
+                    </div>
+                    <div class="form-group">
+                        <label>Link Facebook*</label>
+                        <input type="text" class="form-control" id="fbLink" name="fbLink" placeholder="Nhập Link Facebook Của Bạn..."required />
+                        <small id="fbLinkSmall" class="form-text text-muted">Vui lòng nhập link facebook hoặc user id facebook của bạn để chúng tôi có thể hồi đáp!</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Đặt Câu Hỏi*</label>
+                        <textarea id="message" class="form-control" name="message" placeholder="Xin mời để lại câu hỏi" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary">Gửi</button>
                     <button class="btn btn-danger" type="reset">Xóa Thông Tin Nhập!</button>
                 </form>
             </div>
