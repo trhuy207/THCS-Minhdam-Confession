@@ -59,6 +59,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <tr>
             <th scope="col" style="color:red">Id</th>
             <th scope="col" style="color:red">Tin nhắn</th>
+            <th scope="col" style="color:red">Ghi Chú</th>
             <th scope="col" style="color:red">Thời gian</th>
             </tr>
             </thead>
@@ -71,12 +72,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             while($row=mysqli_fetch_assoc($result)){
             $id=$row['id'];
             $message=$row['message'];
+            $ip=$row['ip'];
+            $os=$row['os'];
+            $browser=$row['browser'];
+            $device=$row['device'];
             $time=$row['time'];
             echo ' 
             <tr>
                 <th scope="row" style="color:blue">'.$id.'</th>
                 <td id="message"><h5><b>'.$message.'</b></h5></td>
-                <td><h5><b>'.$time.'</b></h5></td>
+                    <td id="myInput1" style="font-size: 1.17em; font-weight: bold;">'.$ip.'<br>'.$os.'<br>'.$browser.'<br>'.$device.'</td>
+                    <td><h5><b>'.$time.'</b></h5></td>
                 <td>
                 <button class="btn btn-danger"><a href="includes/form/delete_message_info.php?deleteid='.$id.'" class="text-light">Xóa</a></button>
                 <button class="btn btn-success"><a href="includes/form/message_action.php?messageid_cancelchecked='.$id.'" class="text-light">Duyệt</a></button>

@@ -64,6 +64,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                <tr>
                <th scope="col" style="color:red">Id</th>
                <th scope="col" style="color:red">Tin nhắn</th>
+               <th scope="col" style="color:red">Ghi Chú</th>
                <th scope="col" style="color:red">Thời gian</th>
                </tr>
                </thead>
@@ -76,13 +77,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                while($row=mysqli_fetch_assoc($result)){
                $id=$row['id'];
                $message=$row['message'];
+               $ip=$row['ip'];
+               $os=$row['os'];
+               $browser=$row['browser'];
+               $device=$row['device'];
                $time=$row['time'];
                echo ' 
                <tr>
                     <th scope="row" style="color:blue">'.$id.'</th>
-                    <td id="message"><h5><b>'.$message.'</b></h5></td>
-                    <td><h5><b>'.$time.'</b></h5></td>
+                    <td id="myInput" style="font-size: 1.17em; font-weight: bold;" data-type="text">'.$message.'</td>
+                    <td id="myInput1" style="font-size: 1.17em; font-weight: bold;">'.$ip.'<br>'.$os.'<br>'.$browser.'<br>'.$device.'</td>
+                    <td style="font-size: 1.17em; font-weight: bold;">'.$time.'</td>
                     <td>
+                    <button class="btn btn-primary" data-type="copy">Copy</button>
                     <button class="btn btn-success"><a href="includes/form/message_action.php?messageid_checked='.$id.'" class="text-light">Duyệt</a></button>
                     <button class="btn btn-danger"><a href="includes/form/message_action.php?messageid_canceldashboard='.$id.'" class="text-light">Huỷ</a></button>
                     </td>
@@ -94,6 +101,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                </tbody>
           </table>
      </div>
+     <script>
+          document.querySelectorAll('button[data-type="copy"]')
+               .forEach(function(button){
+                    button.addEventListener('click', function(){
+                    let text = this.parentNode.parentNode
+                    .querySelector('td[data-type="text"]')
+                    .innerText;
+                    
+                    let tmp = document.createElement('textarea');
+                         tmp.value = text;
+                         tmp.setAttribute('readonly', '');
+                         tmp.style.position = 'absolute';
+                         tmp.style.left = '-9999px';
+                         document.body.appendChild(tmp);
+                         tmp.select();
+                         document.execCommand('copy');
+                         document.body.removeChild(tmp);
+                         console.log(`${text} copied.`);
+                         //alert("Đã Copy");
+               });
+          });
+     </script>
 </body>
 </html>
 
