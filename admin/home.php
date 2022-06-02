@@ -14,6 +14,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      <link rel="icon" href="images/248068027_112816467881817_758946115097250792_n.jpg">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/style.css">
      <link
      rel="stylesheet"
      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -59,13 +60,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      </center>
      <br>
      <div class="container">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="table">
                <thead>
                <tr>
                <th scope="col" style="color:red">Id</th>
                <th scope="col" style="color:red">Tin nhắn</th>
                <th scope="col" style="color:red">Ghi Chú</th>
                <th scope="col" style="color:red">Thời gian</th>
+               <th scope="col" style="color:red">Hành Động</th>
                </tr>
                </thead>
                <tbody>
@@ -85,11 +87,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                echo ' 
                <tr>
                     <th scope="row" style="color:blue">'.$id.'</th>
-                    <td id="myInput" style="font-size: 1.17em; font-weight: bold;" data-type="text">'.$message.'</td>
+                    <td id="myInput" style="font-size: 1.17em; font-weight: bold;" data-type="text" class="col-5">'.$message.'</td>
                     <td id="myInput1" style="font-size: 1.17em; font-weight: bold;">'.$ip.'<br>'.$os.'<br>'.$browser.'<br>'.$device.'</td>
                     <td style="font-size: 1.17em; font-weight: bold;">'.$time.'</td>
                     <td>
-                    <button class="btn btn-primary" data-type="copy">Copy</button>
+                    <button class="btn btn-primary copy-text" data-type="copy" onclick="copyText()">Copy</button>
                     <button class="btn btn-success"><a href="includes/form/message_action.php?messageid_checked='.$id.'" class="text-light">Duyệt</a></button>
                     <button class="btn btn-danger"><a href="includes/form/message_action.php?messageid_canceldashboard='.$id.'" class="text-light">Huỷ</a></button>
                     </td>
@@ -101,7 +103,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                </tbody>
           </table>
      </div>
-     <script>
+     <script>  
           document.querySelectorAll('button[data-type="copy"]')
                .forEach(function(button){
                     button.addEventListener('click', function(){

@@ -1,5 +1,14 @@
 body{
-    background: url(images/background-gradient-xanh-xam_052414937.jpeg);
+    background: url(images/shattered.png);
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 .cartext {

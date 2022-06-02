@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/icon.png">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" crossorigin="anonymous">
     <title>THCS Minh Đạm</title>
@@ -78,10 +79,16 @@
             <div class="card-body">
                 <?php if(isset($_REQUEST['info_form'])){ ?>
                     <?php if($_REQUEST['info_form'] == "successfully"){?>
-                        <div class="alert alert-success">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Thành Công!</strong> Chúng tôi đã nhận được thông tin của bạn rùi, chúng tôi sẽ kiểm tra sớm thôi! Xin Cám Ơn Rất Nhiều.
-                        </div>
+                        <script type="text/javascript"> 
+                            swal({
+                                title: "Thành Công!",
+                                text: "Chúng tôi đã nhận được thông tin của bạn rùi, chúng tôi sẽ kiểm tra sớm thôi! \n\nXin Cám Ơn Rất Nhiều!",
+                                icon: "success",
+                            })
+                            .then((value) => {
+                                window.location.href = "/contact.php";
+                            });
+                        </script>
                     <?php }?>
                 <?php } ?>
                 <form action="admin/includes/form/contactFrom.php" method="POST">
@@ -117,7 +124,7 @@
     <footer class="text-center text-lg-start">
         <div class="text-center p-3">
             © 2022 Copyright:
-            <a class="text-dark" href="https://www.thcsminhdam.ga">THCSMinhDam.ga</a> 
+            <a class="text-dark" href="https://www.thcsminhdam.ga">thcsminhdam.ga</a> 
             | Coded By:
             <a class="text-dark" href="https://www.tranquochuy.ga">William Tran</a>
         </div>
