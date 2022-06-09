@@ -126,10 +126,11 @@
                         </script>
                     <?php }?>
                 <?php } ?>
-                <form action="admin/includes/form/form.php" method="POST">  
+                <form action="admin/includes/form/form.php" method="POST" enctype="multipart/form-data">  
                     <div class="form-group">
                         <textarea id="message" name="message" placeholder="Xin mời để lại tâm sự" rows="2" required></textarea>
-                    </div>   
+                        <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg, .jpg, .png"> 
+                    </div>
                     <button class="btn btn-primary me-2" type="submit" name="submit">Gửi nè :></button>
                     <button class="btn btn-danger" type="reset">Xóa Thông Tin Nhập!</button>
                 </form>
