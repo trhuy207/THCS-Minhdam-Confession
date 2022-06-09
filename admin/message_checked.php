@@ -81,8 +81,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <tr>
                 <th scope="row" style="color:blue">'.$id.'</th>
                 <td id="myInput" style="font-size: 1.17em; font-weight: bold;" data-type="text">'.$message.'</td>
-                    <td id="myInput1" style="font-size: 1.17em; font-weight: bold;">'.$ip.'<br>'.$os.'<br>'.$browser.'<br>'.$device.'</td>
-                    <td><h5><b>'.$time.'</b></h5></td>
+                <td id="myInput1" style="font-size: 1.17em; font-weight: bold;">'.$ip.'<br>'.$os.'<br>'.$browser.'<br>'.$device.'</td>
+                <td><h5><b>'.$time.'</b></h5></td>
                 <td>
                 <button class="btn btn-primary" data-type="copy">Copy</button>
                 <button class="btn btn-danger"><a href="includes/form/message_action.php?messageid_checkedcancel='.$id.'" class="text-light">Huỷ</a></button>

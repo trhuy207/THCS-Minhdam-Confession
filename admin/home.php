@@ -50,13 +50,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      </style>
 </head>
 <body>
+     
      <br>
      <center>
      <button onClick="window.location.href=window.location.href" class="btn btn-outline-dark btn-back">Làm mới</button>
-     <a href="logout.php" class="btn btn-danger">Đăng Xuất!</a>
-     <a href="contact_info.php" class="btn btn-primary">Thông Tin Hỗ Trợ</a>
-     <a href="message_checked.php" class="btn btn-success">Đã Duyệt</a>
-     <a href="message_cancel.php" class="btn btn-warning">Đã Huỷ</a>
+          <a href="logout.php" class="btn btn-danger">Đăng Xuất!</a>
+          <a href="contact_info.php" class="btn btn-primary">Thông Tin Hỗ Trợ</a>
+          <a href="message_checked.php" class="btn btn-success">Đã Duyệt</a>
+          <a href="message_cancel.php" class="btn btn-warning">Đã Huỷ</a>
      <br>
      </center>
      <br>
@@ -97,15 +98,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                         </th>
                                         <td 
                                              id="myInput" 
-                                             class="copy-text"
+                                             class="col-5 tdElement"
+                                             style="
+                                                  font-size: 1.17em; 
+                                                  font-weight: bold;
+                                             " 
+                                             data-type="text"
                                         >
-                                             <input 
-                                                  type="text" 
-                                                  class="text" 
-                                                  value="'.$message.'" 
-                                                  readonly
-                                             ></input>
-                                             <button>
+                                             '.$message.'
+                                             <button data-type="copy" onclick="copyText()">
                                                   <i 
                                                        class="fa fa-clone" 
                                                        aria-hidden="true"
@@ -117,7 +118,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                              class="col-5">
                                              <img 
                                                   src="'.$image.'" 
-                                                  width="250px"
+                                                  width=300
                                              >
                                              <button>
                                                   <i 
