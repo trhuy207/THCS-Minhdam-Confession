@@ -88,6 +88,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                               $browser=$row['browser'];
                               $device=$row['device'];
                               $time=$row['time'];
+
+                              $hinhanh = '';
+
+                              if($image == "[No Image]"){
+                                   $hinhanh = $image;
+                              }
+                              else{
+                                   $hinhanh = '
+                                        <img 
+                                             src="'.$image.'" 
+                                             width=300
+                                        >
+                                        <button>
+                                             <i 
+                                                  class="fa fa-clone" 
+                                                  aria-hidden="true"
+                                             ></i>
+                                        </button>
+                                   ';
+                              }
+
                               echo ' 
                                    <tr>
                                         <th 
@@ -97,7 +118,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                              '.$id.'
                                         </th>
                                         <td 
-                                             id="myInput" 
+                                             id="HTMLbox" 
                                              class="col-5 tdElement"
                                              style="
                                                   font-size: 1.17em; 
@@ -106,7 +127,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                              data-type="text"
                                         >
                                              '.$message.'
-                                             <button data-type="copy" onclick="copyText()">
+                                             <button id="HTMLbtn" data-type="copy">
                                                   <i 
                                                        class="fa fa-clone" 
                                                        aria-hidden="true"
@@ -114,18 +135,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                              </button>
                                         </td>
                                         <td 
-                                             id="myInput" 
                                              class="col-5">
-                                             <img 
-                                                  src="'.$image.'" 
-                                                  width=300
-                                             >
-                                             <button>
-                                                  <i 
-                                                       class="fa fa-clone" 
-                                                       aria-hidden="true"
-                                                  ></i>
-                                             </button>
+                                             '.$hinhanh.'
                                         </td>
                                         <td 
                                              id="myInput1" 
@@ -157,6 +168,34 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           </table>
      </div>
 </body>
+<script>
+     document.querySelectorAll('button[data-type="copy"]')
+     .forEach(function(button){
+     button.addEventListener('click', function(){
+          let text = this.parentNode.parentNode
+          .querySelector('td[data-type="text"]')
+          .innerText;
+          
+          let tmp = document.createElement('textarea');
+          tmp.value = text;
+          tmp.setAttribute('readonly', '');
+          tmp.style.position = 'absolute';
+          tmp.style.left = '-9999px';
+          document.body.appendChild(tmp);
+          tmp.select();
+          document.execCommand('copy');
+          document.body.removeChild(tmp);
+          document.querySelector('button[data-type="copy"]').classList.add('active');
+          window.getSelection().removeAllRanges();
+          setTimeout(()=>{
+               document.querySelector('button[data-type="copy"]').classList.remove('active');
+          }, 2500);
+          console.log(`${text} copied.`);
+          //alert("Đã Copy");
+     });
+     });
+
+</script>
 </html>
 
 <?php 

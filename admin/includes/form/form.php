@@ -17,9 +17,18 @@ if (isset($_POST['submit'])){
     $target_file = $target_dir.$hinhanhpath;
     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
     
+    $hinhanh = '';
     
+    //check upload file
+    if(!$hinhanhpath){
+        $hinhanh = '[No Image]';
+    }
+    elseif($hinhanhpath){
+        $hinhanh = 'uploads/'.$hinhanhpath.'';
+    }
+
     $sql="insert into `message` (message, image, ip, os, browser, device)
-    value('$message', 'uploads/$hinhanhpath', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
+    value('$message', '$hinhanh', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
     $result=mysqli_query($conn,$sql);
     if($result){
         header("Location: ../../../?info_form=successfully#footer_part");
