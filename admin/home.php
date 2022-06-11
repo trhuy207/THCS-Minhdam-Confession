@@ -12,6 +12,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="js/script.js"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
      <link rel="icon" href="images/248068027_112816467881817_758946115097250792_n.jpg">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -73,6 +74,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                          <th scope="col" style="color:red">Hành Động</th>
                     </tr>
                </thead>
+
+               <script type="text/javascript">
+                    function copyBtn(){
+                         swal({
+                              title: "Cảnh Báo!",
+                              text: "Tính năng đang trong quá trình phát triển, vui lòng sao chép ảnh theo cách thủ công! \nXin Thông Cảm!",
+                              icon: "warning",
+                         })
+                    }
+               </script>
+
                <tbody>
                <?php
                     require "includes/db_conn1.php";
@@ -100,7 +112,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                                              src="'.$image.'" 
                                              width=300
                                         >
-                                        <button>
+                                        <button onClick="copyBtn()">
                                              <i 
                                                   class="fa fa-clone" 
                                                   aria-hidden="true"
