@@ -131,7 +131,7 @@
                         <textarea id="message" name="message" placeholder="Xin mời để lại tâm sự" rows="2" required></textarea>
                         <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg, .jpg, .png"> 
                     </div>
-                    <button class="btn btn-primary me-2" type="submit" name="submit">Gửi nè :></button>
+                    <button class="btn btn-primary me-2" type="submit" name="submit" onclick="this.form.submit(); this.disabled = true">Gửi nè :></button>
                     <button class="btn btn-danger" type="reset">Xóa Thông Tin Nhập!</button>
                 </form>
             </div>

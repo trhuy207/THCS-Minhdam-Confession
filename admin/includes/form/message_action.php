@@ -5,18 +5,19 @@ require "../db_conn1.php";
 if(isset($_GET['messageid_canceldashboard'])){
     $id = $_GET['messageid_canceldashboard'];
 
-    $sql = "SELECT `message`, `ip`, `os`, `browser`, `device` FROM `message` WHERE id = $id";
+    $sql = "SELECT `message`, `image`, `ip`, `os`, `browser`, `device` FROM `message` WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     if($result){
         $row = mysqli_fetch_assoc($result);
 
         $message_cancel = $row['message'];
+        $image = $row['image'];
         $userInfoIp = $row['ip'];
         $userInfoOs = $row['os'];
         $userInfoBrowser = $row['browser'];
         $userInfoDevice = $row['device'];
 
-        $sql1 = "INSERT INTO `message_cancel` (`message`, `ip`, `os`, `browser`, `device`) VALUES ('$message_cancel', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
+        $sql1 = "INSERT INTO `message_cancel` (`message`, `image`, `ip`, `os`, `browser`, `device`) VALUES ('$message_cancel', '$image', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
         $result1 = mysqli_query($conn, $sql1);
 
         if($result1){
@@ -36,21 +37,23 @@ if(isset($_GET['messageid_canceldashboard'])){
     }
 }
 
+// phần này lỗi Unknown column 'image' in 'field list'
 if(isset($_GET['messageid_cancelchecked'])){
     $id = $_GET['messageid_cancelchecked'];
 
-    $sql = "SELECT `message`, `ip`, `os`, `browser`, `device` FROM `message_cancel` WHERE id = $id";
+    $sql = "SELECT `message`, `image`, `ip`, `os`, `browser`, `device` FROM `message_cancel` WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     if($result){
         $row = mysqli_fetch_assoc($result);
 
         $message_cancelchecked = $row['message'];
+        $image = $row['image'];
         $userInfoIp = $row['ip'];
         $userInfoOs = $row['os'];
         $userInfoBrowser = $row['browser'];
         $userInfoDevice = $row['device'];
 
-        $sql1 = "INSERT INTO `message_checked` (`message`, `ip`, `os`, `browser`, `device`) VALUES ('$message_cancelchecked', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
+        $sql1 = "INSERT INTO `message_checked` (`message`, `image`, `ip`, `os`, `browser`, `device`) VALUES ('$message_cancelchecked', `$image`, '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
         $result1 = mysqli_query($conn, $sql1);
 
         if($result1){
@@ -73,18 +76,19 @@ if(isset($_GET['messageid_cancelchecked'])){
 if(isset($_GET['messageid_checked'])){
     $id = $_GET['messageid_checked'];
 
-    $sql = "SELECT `message`, `ip`, `os`, `browser`, `device` FROM `message` WHERE id = $id";
+    $sql = "SELECT `message`, `image`, `ip`, `os`, `browser`, `device` FROM `message` WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     if($result){
         $row = mysqli_fetch_assoc($result);
 
         $message_checked = $row['message'];
+        $image = $row['image'];
         $userInfoIp = $row['ip'];
         $userInfoOs = $row['os'];
         $userInfoBrowser = $row['browser'];
         $userInfoDevice = $row['device'];
 
-        $sql1 = "INSERT INTO `message_checked` (`message`, `ip`, `os`, `browser`, `device`) VALUES ('$message_checked', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
+        $sql1 = "INSERT INTO `message_checked` (`message`, `image`, `ip`, `os`, `browser`, `device`) VALUES ('$message_checked', '$image', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
         $result1 = mysqli_query($conn, $sql1);
 
         if($result1){
@@ -107,18 +111,19 @@ if(isset($_GET['messageid_checked'])){
 if(isset($_GET['messageid_checkedcancel'])){
     $id = $_GET['messageid_checkedcancel'];
 
-    $sql = "SELECT `message`, `ip`, `os`, `browser`, `device` FROM `message_checked` WHERE id = $id";
+    $sql = "SELECT `message`, `image`, `ip`, `os`, `browser`, `device` FROM `message_checked` WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     if($result){
         $row = mysqli_fetch_assoc($result);
 
         $message_checkedcancel = $row['message'];
+        $image = $row['image'];
         $userInfoIp = $row['ip'];
         $userInfoOs = $row['os'];
         $userInfoBrowser = $row['browser'];
         $userInfoDevice = $row['device'];
 
-        $sql1 = "INSERT INTO `message_cancel` (`message`, `ip`, `os`, `browser`, `device`) VALUES ('$message_checkedcancel', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
+        $sql1 = "INSERT INTO `message_cancel` (`message`, `image`, `ip`, `os`, `browser`, `device`) VALUES ('$message_checkedcancel', '$image', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
         $result1 = mysqli_query($conn, $sql1);
 
         if($result1){

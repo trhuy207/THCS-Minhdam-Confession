@@ -106,6 +106,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
                               if($image == "[No Image]"){
                                    $hinhanh = $image;
                               }
+                              elseif($image == null){
+                                   $hinhanh == '[No Image]';
+                              }
                               else{
                                    $hinhanh = '
                                         <img 
@@ -197,11 +200,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
           tmp.select();
           document.execCommand('copy');
           document.body.removeChild(tmp);
-          document.querySelector('button[data-type="copy"]').classList.add('active');
-          window.getSelection().removeAllRanges();
-          setTimeout(()=>{
-               document.querySelector('button[data-type="copy"]').classList.remove('active');
-          }, 2500);
+          swal({
+               title: "Thông Báo!",
+               text: `Đã copy "${text}"!`,
+               icon: "success",
+               timer: 3000,
+          })
           console.log(`${text} copied.`);
           //alert("Đã Copy");
      });
