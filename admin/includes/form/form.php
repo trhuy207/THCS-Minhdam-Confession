@@ -8,7 +8,7 @@ if (isset($_POST['submit'])){
     $userInfoOs = UserInfo::get_os();
     $userInfoBrowser = UserInfo::get_browser();
     $userInfoDevice = UserInfo::get_device();
-    $message=$_POST['message'];
+    $message = $_POST['message'];
 
     $hinhanhpath=basename($_FILES['fileToUpload']['name']);
 
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])){
     value('$message', '$hinhanh', '$userInfoIp', '$userInfoOs', '$userInfoBrowser', '$userInfoDevice')";
     $result=mysqli_query($conn,$sql);
     if($result){
-        header("Location: ../../../?info_form=successfully#footer_part");
+        header("Location: ../../../?info_form=successfully");
         exit();
     }else{
         die(mysqli_error($conn));

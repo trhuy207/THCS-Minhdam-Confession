@@ -26,6 +26,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://www.thcsminhdam.ga/images/278028755_106243695388538_8023480144971372750_n.png">
     <link rel="icon" href="images/icon.png">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -64,7 +65,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand" href="#">THCS Minh Đạm Confession</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -95,9 +96,13 @@
                 <p class="card-text">
                     Tại đây bản hãy gửi những tâm tư, tình cảm, ... của bản thân mà không lo bị lộ danh tính nè :> <br>Chúc Các Bạn Một Ngày Vui Vẻ!
                     <br><br>
-                    LƯU Ý :
-                    AD sẽ không duyệt những cfs mang tính gây war, xúc phạm nhau hay có những từ ngữ thô tục đâu nhé!
+                    LƯU Ý :<br>
+                    - AD sẽ không duyệt những cfs mang tính gây war, xúc phạm nhau hay có những từ ngữ thô tục đâu nhé!
                     Có thể confession sẽ bị trễ vì con ad lười hoặc bận 
+                    <br>
+                    - khi gửi ảnh kèm theo vui lòng chỉ gửi ảnh minh họa vui vẻ, tuyệt đối không gửi ảnh các bạn hoặc người nào đó lên, 
+                    có chuyện gì ad sẽ không chịu trách nhiệm đâu đấy!  
+                    <br>
                     Hết rùi hihi, cảm ơn mọi người đã đọc :33
                     <br>
                     <i>Do server web ở Châu Âu nên việc gửi cfs sẽ chậm một chút các bạn hãy kiên nhẫn nhé! Đừng bấm gửi quá nhiều lần ạ! Xin Cám Ơn!</i>

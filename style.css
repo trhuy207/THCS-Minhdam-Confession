@@ -14,3 +14,7 @@ textarea {
 .cartext {
     font-size: 25px;
 }
+
+.bg-dark{
+    background: url(images/shattered.png);
+}

@@ -12,8 +12,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/248068027_112816467881817_758946115097250792_n.jpg">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -53,7 +55,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     <center>
         <h1>Thông Tin Hỗ Trợ</h1>
     </center>
-    <div class="container">
+    <div class="">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -63,8 +65,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <th scope="col" style="color:red">SĐT</th>
             <th scope="col" style="color:red">Link FB</th>
             <th scope="col" style="color:red">Tin Nhắn</th>
+            <th scope="col" style="color:red">Ảnh</th>
             </tr>
             </thead>
+
+            <script type="text/javascript">
+                function copyBtn(){
+                        swal({
+                            title: "Cảnh Báo!",
+                            text: "Tính năng đang trong quá trình phát triển, vui lòng sao chép ảnh theo cách thủ công! \nXin Thông Cảm!",
+                            icon: "warning",
+                        })
+                }
+            </script>
+
             <tbody>
             <?php
             require "includes/db_conn1.php";
@@ -78,14 +92,43 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             $phone=$row['phone'];
             $fbLink=$row['fbLink'];
             $message=$row['message'];
+            $image=$row['image'];
+
+            $hinhanh = '';
+
+            if($image == "[No Image]"){
+                $hinhanh = $image;
+            }
+            elseif($image == null){
+                $hinhanh == '[No Image]';
+            }
+            else{
+                $hinhanh = '
+                    <img 
+                            src="'.$image.'" 
+                            width=300
+                    >
+                    <button onClick="copyBtn()">
+                            <i 
+                                class="fa fa-clone" 
+                                aria-hidden="true"
+                            ></i>
+                    </button>
+                ';
+            }
+
             echo ' 
             <tr>
                 <th scope="row" style="color:blue">'.$id.'</th>
-                <th scope="row">'.$name.'</th>
-                <th scope="row">'.$email.'</th>
-                <th scope="row">'.$phone.'</th>
-                <th scope="row" href="'.$fbLink.'">'.$fbLink.'</th>
-                <td id="message"><h5><b>'.$message.'</b></h5></td>
+                <th scope="row" class="col">'.$name.'</th>
+                <th scope="row" class="col"><a href="mailto:'.$email.'" target="_blank">'.$email.'</a></th>
+                <th scope="row" class="col"><a href="tel:'.$phone.'" target="_blank">'.$phone.'</a></th>
+                <th scope="row" class="col"><a href="'.$fbLink.'" target="_blank">'.$fbLink.'</a></th>
+                <td id="message" class="col"><h5><b>'.$message.'</b></h5></td>
+                <td class="col-5">'.$hinhanh.'</td>
+                <td>
+                    <button class="btn btn-warning"><a href="includes/form/contactFrom.php?delete_contact_info='.$id.'" class="text-light">Xóa</a></button>
+                </td>
             </tr>
             ';
             }

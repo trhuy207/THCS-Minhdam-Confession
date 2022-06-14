@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://www.thcsminhdam.ga/images/278028755_106243695388538_8023480144971372750_n.png">
     <link rel="icon" href="images/icon.png">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -43,7 +44,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand" href="#">THCS Minh Đạm Confession</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -91,7 +92,7 @@
                         </script>
                     <?php }?>
                 <?php } ?>
-                <form action="admin/includes/form/contactFrom.php" method="POST">
+                <form action="admin/includes/form/contactFrom.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Họ Và Tên*</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Nhập Tên Của Bạn..." required />
@@ -112,6 +113,10 @@
                     <div class="form-group">
                         <label>Đặt Câu Hỏi*</label>
                         <textarea id="message" class="form-control" name="message" placeholder="Xin mời để lại câu hỏi" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình Ảnh Minh Họa</label>
+                        <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg, .jpg, .png" class="form-control"> 
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Gửi</button>
                     <button class="btn btn-danger" type="reset">Xóa Thông Tin Nhập!</button>
