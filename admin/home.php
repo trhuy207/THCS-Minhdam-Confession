@@ -57,6 +57,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
      <button onClick="window.location.href=window.location.href" class="btn btn-outline-dark btn-back">Làm mới</button>
           <a href="logout.php" class="btn btn-danger">Đăng Xuất!</a>
           <a href="contact_info.php" class="btn btn-primary">Thông Tin Hỗ Trợ</a>
+          <a href="blockIP.php" class="btn btn-info">Chặn IP</a>
           <a href="message_checked.php" class="btn btn-success">Đã Duyệt</a>
           <a href="message_cancel.php" class="btn btn-warning">Đã Huỷ</a>
      <br>
