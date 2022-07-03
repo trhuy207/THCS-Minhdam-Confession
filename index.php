@@ -1,24 +1,10 @@
 <!-- BẢN QUYỀN THUỐC VỀ Quốc Huy | CODED BY QUỐC HUY -->
-<?php
-    // Function to get the client IP address
-    function get_client_ip(){
-    $ipaddress='';
-    if(isset($_SERVER['HTTP_CLIENT_IP']))
-        $ipaddress=$_SERVER['HTTP_CLIENT_IP'];
-    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-        $ipaddress=$_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if(isset($_SERVER['HTTP_X_FORWARDED']))
-        $ipaddress=$_SERVER['HTTP_X_FORWARDED'];
-    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-        $ipaddress=$_SERVER['HTTP_FORWARDED_FOR'];
-    else if(isset($_SERVER['HTTP_FORWARDED']))
-        $ipaddress=$_SERVER['HTTP_FORWARDED'];
-    else if(isset($_SERVER['REMOTE_ADDR']))
-        $ipaddress=$_SERVER['REMOTE_ADDR'];
-    else
-        $ipaddress='UNKNOWN';
-    return $ipaddress;
-    }
+<?php 
+    include('admin/includes/db_conn1.php');
+    include('admin/includes/UserInfo.php');
+
+    $sql = "SELECT * FROM `blockip`";
+    $result = mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +103,32 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Mọi người có tâm sự gì nè</h5>
+                <?php if($result){?>
+                    <?php while($row=mysqli_fetch_assoc($result)){
+                        $ip = $row['ip'];
+
+                        $userInfoIp = UserInfo::get_ip();?>
+                        <?php if($ip == $userInfoIp){?>
+                            <script type="text/javascript"> 
+                                swal({
+                                    title: "Cảnh Báo!",
+                                    text: "Bạn đã có một số câu từ không chuẩn mực trong lời văn, bạn đã bị chặn ip trên trang web, vui lòng chờ khoảng 72h tiếp theo để được gỡ chặn! Bạn có thể truy cập và gửi báo cáo bên trang hỗ trợ để được xem xét sớm hơn! \n\nXin Cám Ơn!",
+                                    icon: "warning",
+                                    buttons: true,
+                                    buttons: ["Tới Trang Hỗ Trợ!", "Oke!"],
+                                })
+                                .then((willDelete) => {
+                                    if (!willDelete) {
+                                        window.location.href = "/contact.php";
+                                    } 
+                                });
+                            </script>
+                        <?php }?>
+
+                    <?php }?>
+                <?php }else{
+                    echo 'Có lỗi đã xảy ra!';
+                }?>
                 <?php if(isset($_REQUEST['info_form'])){ ?>
                     <?php if($_REQUEST['info_form'] == "successfully"){?>
                         <script type="text/javascript"> 
@@ -132,12 +144,21 @@
                     <?php }?>
                 <?php } ?>
                 <form action="admin/includes/form/form.php" method="POST" enctype="multipart/form-data">  
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Xin mời để lại tâm sự" rows="2" required></textarea>
-                        <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg, .jpg, .png"> 
-                    </div>
-                    <button class="btn btn-primary me-2" type="submit" name="submit" onclick="this.form.submit(); this.disabled = true">Gửi nè :></button>
-                    <button class="btn btn-danger" type="reset">Xóa Thông Tin Nhập!</button>
+                    <?php if($ip == $userInfoIp){ ?>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Xin mời để lại tâm sự" rows="2" required disabled></textarea>
+                            <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg, .jpg, .png" disabled> 
+                        </div>
+                        <button class="btn btn-primary me-2" type="submit" name="submit" disabled>Gửi nè :></button>
+                        <button class="btn btn-danger" type="reset" disabled>Xóa Thông Tin Nhập!</button>
+                    <?php }else{ ?>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Xin mời để lại tâm sự" rows="2" required></textarea>
+                            <input type="file" name="fileToUpload" id="fileToUpload" accept=".jpeg, .jpg, .png"> 
+                        </div>
+                        <button class="btn btn-primary me-2" type="submit" name="submit">Gửi nè :></button>
+                        <button class="btn btn-danger" type="reset">Xóa Thông Tin Nhập!</button>
+                    <?php } ?>
                 </form>
             </div>
         </div>

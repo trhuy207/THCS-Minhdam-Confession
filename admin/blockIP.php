@@ -71,6 +71,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             <tr>
             <th scope="col" style="color:red">Id</th>
             <th scope="col" style="color:red">IP</th>
+            <th scope="col" style="color:red">Thời Gian</th>
+            <th scope="col" style="color:red">Hành Động</th>
             </tr>
             </thead>
 
@@ -93,13 +95,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             while($row=mysqli_fetch_assoc($result)){
             $id=$row['id'];
             $ip=$row['ip'];
+            $date=$row['date'];
 
             echo ' 
             <tr>
                 <th scope="row" style="color:blue">'.$id.'</th>
-                <th scope="row" class="col">'.$ip.'</th>
+                <th scope="row" class="col-5">'.$ip.'</th>
+                <th scope="row" class="col">'.$date.'</th>
                 <td>
-                    <button class="btn btn-warning"><a href="includes/form/?delete_ip='.$id.'" class="text-light">Xóa</a></button>
+                    <button class="btn btn-warning"><a href="includes/form/blockIpForm.php?delete_id='.$id.'" class="text-light">Xóa</a></button>
                 </td>
             </tr>
             ';
